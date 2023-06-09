@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <link href="assets/icon.gif" rel="icon">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>GitTech</title>
+</head>
+<body>
+    <!--- Header --->
+    <header>
+        <div>
+            <a href="#index"><img class="icon" src="assets/icon.gif"></a>
+        </div>        
+        <div class="search">
+            <input class="searchbox" type="search">
+            <button>Search</button>
+        </div>
+        <div class="topNav">
+            <ul>
+                <li>home</li>
+                <li>network</li>
+                <li>messages</li>
+                <li>notifications</li>
+                <li>profile</li>
+            </ul>
+        </div>
+    </header>
+    <!--- Main Body area --->
+    <main>
+        <!--- Left side bar area--->
+        <div>
+            <div class="leftSideBar">
+                <div class="profileInfo">
+                    <img class="profilePic" src="assets/profile picture.jpeg">
+                </div>
+                <div class="moreInfo">
+                    <a href="#"><h3>Connections:</h3></a>
+                    <a href="#"><h3>Views:</h3></a>
+                    <a href="#"><h3>Company:</h3></a>
+                    <a href="#"><h3>Groups:</h3></a>
+                </div>
+            </div>
+        </div>
+        <div class="mainFeed">
+            <div class="createPost">
+                <div class="topLine">
+                    <img src="assets/icon.gif" class="createIcon">
+                        <button class="createPostInput">Create a new post</button>
+                </div>
+                <div class="line"></div>
+                <div class="inputs">
+                    <button>Photo</button>
+                    <button>Video</button>
+                    <button>Article</button>
+                </div>
+            </div>
+            <div class="line"> </div>
+            <div class="feed">
+                <div class="topLine">
+                    <img src="assets/icon.gif" class="createIcon">
+                        <p class="descriptors">
+                            Authors name</br>
+                            Authors github link</br>
+                            Post Time
+                        </p>
+                </div>
+            <div class="content">
+                    <h1>Wonderfull stuff here</h1>
+            </div>
+            <div class="line"></div>
+                <div class="postFooter">
+                    <button>Like</button>
+                    <button>Comment</button>
+                    <button>Share</button>
+                    <button>Send</button>
+                </div>
+             </div>
+        </div>
+        <!--- Right side bar area --->
+        <div>
+            <div class="rightSideBar">
+                <div class="ads">
+                   <p>ad block here</p>
+                </div>
+                <div class="ads">
+                   <p>ad block here</p>
+                </div>
+            </div>
+            <div class="links">
+                <a href="#">LinkedIn</a>
+                <a href="#">github</a>
+                <a href="#">contact</a>
+            </div>
+            <div class="footernotes">
+                <p>Created by:</p>
+                <p>Steven Underwood</p>
+                <p>2023</p>
+            </div>
+        </div>
+    </main>
+
+
+</body>
+<script src="script.js"></script>
+</html>

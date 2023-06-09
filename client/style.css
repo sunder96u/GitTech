@@ -1,0 +1,190 @@
+/* Attributes */
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: lavender;
+    margin: 0;
+}
+
+header {
+    height: 50px;
+    background-color:black;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    align-content: center;
+    padding: 10px;
+}
+
+ul li {
+    list-style: none;
+    display: inline-block;
+    justify-content: space-between;
+    align-content: center;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 25px;
+}
+
+button {
+    border-radius: 1rem;
+}
+
+/* Classes */
+
+.icon {
+    height: 50px;
+    position: relative;
+    left: 25px;
+}
+
+.search {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 25vw;
+    height: 25px;
+    padding-top: 10px;
+}
+
+.searchbox {
+    width: 75%;
+}
+
+.leftSideBar {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: black;
+    width: 20vw;
+    border-radius: 1rem;
+    padding: 5px;
+}
+
+.leftSideBar a {
+    text-decoration: none;
+}
+
+.mainFeed {
+    width: 50vw;
+}
+
+.createPost {
+    margin: 5px;
+    border-radius: 1rem;
+    padding: 5px;
+    background: lightgoldenrodyellow;
+}
+
+.topLine {
+    width: 100%;
+    display: inline-flex;
+}
+
+.createPostInput {
+    margin-left: 5px;
+    width:200%;
+    height: 100;
+    border-radius: 10px;
+}
+
+.createIcon {
+    height: 50px;
+    border-radius: 25%;
+}
+
+.line {
+    padding: 3px;
+    border-bottom: 1px solid black;
+}
+
+.inputs {
+    padding-top: 3px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.feed {
+    margin: 5px;
+    border-radius: 1rem;
+    padding: 5px;
+    background: lightgoldenrodyellow;
+}
+
+.descriptors {
+    margin: 0;
+    padding-left: 5px;
+}
+
+.postFooter {
+    padding-top: 5px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.rightSideBar {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    background-color: black;
+    border-radius: 1rem;
+    width: 20vw;
+    padding: 3px;
+}
+
+.profilePic {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.ads {
+    background-color: white;
+    border-radius: 1rem;
+    width: 90%;
+    height:150px;
+    margin: 3px;
+    padding: 5px;
+}
+
+
+
+/* Ids */
+
+/* Media */
+
+/* 1000px or larger */
+@media (max-width: 1000px) {
+
+}
+
+/* 750px - 1000px */
+@media (max-width: 750px) {
+    .rightSideBar {
+        width: 50vw;
+    }
+    .mainFeed {
+        width: 70vw;
+    }
+    
+}
+
+/* >500px */
+@media (max-width: 500px) {
+    .mainFeed {
+        width: 75vw;
+    }
+    .rightSideBar {
+        width: 75vw;
+    }
+    .leftSideBar {
+        width: 75vw;
+    }
+
+}
+
+/* Phone? hor and vert */
