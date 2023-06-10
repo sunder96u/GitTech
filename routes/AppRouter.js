@@ -1,4 +1,37 @@
 const Router = require('express').Router()
 
+const commentLikeRouter = require('./commentLikesRouter')
+const commentsRouter = require('./commentsRouter')
+const companiesRouter = require('./companiesRouter')
+const connectionsRouter = require('./connectionsRouter')
+const educationRouter = require('./educationRouter')
+const experienceRouter = require('./experiencesRouter')
+const groupsRouter = require('./groupsRouter')
+const messagesRouter = require('./messagesRouter')
+const postLikeRouter = require('./postsRouter')
+const postsRouter = require('./postsRouter')
+const profileViewRouter = require('./profileViewsRouter')
+const projectsRouter = require('./projectRouter')
+const schoolsRouter = require('./schoolsRouter')
+const skillsRouter = require('./skillsRouter')
+const userRouter = require('./usersRouter')
+
+Router.use('/commentLike', commentLikeRouter)
+Router.use('/comment', commentsRouter)
+Router.use('/company', companiesRouter)
+Router.use('/connection', connectionsRouter)
+Router.use('/education', educationRouter)
+Router.use('/experience', experienceRouter)
+Router.use('/group', groupsRouter)
+Router.use('/messages', messagesRouter)
+Router.use('/postLike', postLikeRouter)
+Router.use('/post', postsRouter)
+Router.use('/profileView', profileViewRouter)
+Router.use('/project', projectsRouter)
+Router.use('/school', schoolsRouter)
+Router.use('/skill', skillsRouter)
+Router.use('/user', userRouter)
+
+
 
 module.exports = Router
