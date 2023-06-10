@@ -157,11 +157,6 @@ button {
 
 /* Media */
 
-/* 1000px or larger */
-@media (max-width: 1000px) {
-
-}
-
 /* 750px - 1000px */
 @media (max-width: 750px) {
     .rightSideBar {
@@ -174,7 +169,7 @@ button {
 }
 
 /* >500px */
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     .mainFeed {
         width: 75vw;
     }
