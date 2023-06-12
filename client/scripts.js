@@ -56,7 +56,7 @@ newsFeedNotifications = async () => {
 
 /* eventListenters */
 newPost.onclick = () => {
-    const modal = document.getElementById('genModal')
+    const modal = document.getElementById('CreatePost')
     modal.style.display = 'block'
     console.log('new post btn clicked')
 }
@@ -65,6 +65,7 @@ closeSpan.onclick = () => {
     const modal = document.getElementById('genModal')
     modal.style.display = 'none'
 }
+
 
 const messageClick = document.querySelector('.message')
 messageClick.onclick = () => {
@@ -95,5 +96,19 @@ closePost.onclick = () => {
 
 messages.onclick = () => {
     console.log('messages clicked')
+    const modal = document.getElementById('genModal')
+    modal.style.display = 'block'
 }
 
+const profileViewers = document.querySelector('.profileView')
+profileViewers.onclick = () => {
+    console.log('profile views clicked')
+    const modal = document.getElementById('profileViewModal')
+    modal.style.display = 'block'
+}
+
+const closeProfile = document.querySelector('.closeProfile')
+closeProfile.onclick = () => {
+    const modal = document.getElementById('profileViewModal')
+    modal.style.display = 'none'
+}

@@ -68,6 +68,13 @@ button {
     padding: 5px;
 }
 
+.backgroundImg {
+    background-image: url('assets/221471.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 1rem;
+}
+
 .leftSideBar a {
     text-decoration: none;
     color: black
@@ -232,6 +239,15 @@ button {
     background-color: red;
 }
 
+.profile {
+    text-align: center;
+
+}
+
+.profile img {
+    width: 25%;
+    border-radius: 50%;
+}
 /* Ids */
 
 #CreatePost .modal-header {

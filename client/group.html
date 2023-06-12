@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <link href="assets/icon.gif" rel="icon">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://kit.fontawesome.com/f5d8bbbeb2.js" crossorigin="anonymous"></script>
+    <title>GitTech</title>
+</head>
+<body>
+    <!--- Header --->
+    <header>
+        <div>
+            <a href="#index"><img class="icon" src="assets/icon.gif"></a>
+        </div>        
+        <div class="search">
+            <input class="searchbox" type="search">
+            <button>Search</button>
+        </div>
+        <div class="topNav">
+            <ul>
+                <li><a href="../client/index.html"><i class="fa-solid fa-house"></i>home</a></li>
+                <li><a href='../client/network.html'><i class="fa-solid fa-circle-nodes"></i>network</a></li>
+                <li class="messages"><i class="fa-solid fa-envelope"></i>messages</li>
+                <li><i class="fa-solid fa-bell" data-count="25"></i>notifications</li> <!-- Send to modal or dropdown-->
+                <li><a href="../client/profile.html"><i class="fa-solid fa-circle-user"></i>profile</a></li>
+            </ul>
+        </div>
+    </header>
+    <!--- Main Body area --->
+    <main>
+        <div class="mainFeed">
+            <div class="About">
+                <div class="feed">
+                    <div class="content profile">
+                        <div>
+                            <img src="assets/profile picture.jpeg">
+                        </div>
+                        <div>
+                            <p>Name</p>
+                            <p>website url</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="feed">
+                    <div class="content">
+                        <h1>Group mission statement here</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="feed">
+                <div class="topLine">
+                    <h1>Users</h1>
+                </div>
+            </div>
+            <div class="feed">
+                <div class="topLine">
+                    <h1>Group Posts here</h1>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+</body>
+<script src="scripts.js"></script>
+</html>

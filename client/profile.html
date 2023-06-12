@@ -7,6 +7,7 @@
     <link href="style.css" rel="stylesheet">
     <link href="assets/icon.gif" rel="icon">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://kit.fontawesome.com/f5d8bbbeb2.js" crossorigin="anonymous"></script>
     <title>GitTech</title>
 </head>
 <body>
@@ -21,36 +22,34 @@
         </div>
         <div class="topNav">
             <ul>
-                <li>home</li>
-                <li>network</li>
-                <li>messages</li>
-                <li>notifications</li>
-                <li>profile</li>
+                <li><a href="../client/index.html"><i class="fa-solid fa-house"></i>home</a></li>
+                <li><a href='../client/network.html'><i class="fa-solid fa-circle-nodes"></i>network</a></li>
+                <li class="messages"><i class="fa-solid fa-envelope"></i>messages</li>
+                <li><i class="fa-solid fa-bell" data-count="25"></i>notifications</li> <!-- Send to modal or dropdown-->
+                <li><a href="../client/profile.html"><i class="fa-solid fa-circle-user"></i>profile</a></li>
             </ul>
         </div>
     </header>
     <!--- Main Body area --->
     <main>
-        <!--- Left side bar area--->
-        <div>
-            <div class="leftSideBar">
-                <div class="profileInfo">
-                    <img class="profilePic" src="assets/profile picture.jpeg">
-                </div>
-                <div class="moreInfo">
-                    <a href="#"><h3>Connections:</h3></a>
-                    <a href="#"><h3>Views:</h3></a>
-                    <a href="#"><h3>Company:</h3></a>
-                    <a href="#"><h3>Groups:</h3></a>
-                </div>
-            </div>
-        </div>
         <div class="mainFeed">
             <div class="About">
-                <h1> Persons Name:</h1>
+                <div class="feed">
+                    <div class="content profile">
+                        <div class="backgroundImg">
+                            <img src="assets/profile picture.jpeg">
+                        </div>
+                        <div>
+                            <p>Name</p>
+                            <p>website url</p>
+                            <p>github url</p>
+                            <p>company</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="feed">
                     <div class="content">
-                        <h1>Wonderfull stuff here</h1>
+                        <h1>Brand statement goes here</h1>
                     </div>
                 </div>
             </div>
@@ -70,30 +69,9 @@
                 </div>
             </div>
         </div>
-        <!--- Right side bar area --->
-        <div>
-            <div class="rightSideBar">
-                <div class="ads">
-                   <p>ad block here</p>
-                </div>
-                <div class="ads">
-                   <p>ad block here</p>
-                </div>
-            </div>
-            <div class="links">
-                <a href="#">LinkedIn</a>
-                <a href="#">github</a>
-                <a href="#">contact</a>
-            </div>
-            <div class="footernotes">
-                <p>Created by:</p>
-                <p>Steven Underwood</p>
-                <p>2023</p>
-            </div>
-        </div>
     </main>
 
 
 </body>
-<script src="script.js"></script>
+<script src="scripts.js"></script>
 </html>

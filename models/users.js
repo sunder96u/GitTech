@@ -5,6 +5,7 @@ const userSchema = Schema ({
     firstName: { type: String, required: true},
     lastName: { type: String, required: false},
     photo: { type: String, required: false},
+    background: { type: String, required: false},
     website: { type: String, required: false},
     city: { type: String, required: true},
     state: { type: String, required: true},
