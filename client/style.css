@@ -3,18 +3,19 @@
 body {
     height: 100vh;
     width: 100vw;
-    background-color: lavender;
+    background-color:#CCCCCC;
     margin: 0;
 }
 
 header {
     height: 50px;
-    background-color:black;
+    background-color:#6C6EA0;
     display: flex;
     justify-content: space-between;
     color: white;
     align-content: center;
     padding: 10px;
+    border: solid black 2px;
 }
 
 ul li {
@@ -60,7 +61,8 @@ button {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: black;
+    background-color: white;
+    border: solid black 2px;
     width: 20vw;
     border-radius: 1rem;
     padding: 5px;
@@ -68,6 +70,7 @@ button {
 
 .leftSideBar a {
     text-decoration: none;
+    color: black
 }
 
 .mainFeed {
@@ -78,7 +81,8 @@ button {
     margin: 5px;
     border-radius: 1rem;
     padding: 5px;
-    background: lightgoldenrodyellow;
+    background: white;
+    border: solid black 2px;
 }
 
 .topLine {
@@ -113,7 +117,8 @@ button {
     margin: 5px;
     border-radius: 1rem;
     padding: 5px;
-    background: lightgoldenrodyellow;
+    background: white;
+    border: solid black 2px;
 }
 
 .descriptors {
@@ -127,19 +132,12 @@ button {
     justify-content: space-evenly;
 }
 
-.rightSideBar {
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    background-color: black;
-    border-radius: 1rem;
-    width: 20vw;
-    padding: 3px;
-}
 
 .profilePic {
-    width: 100%;
+    width: 50%;
     border-radius: 50%;
+    position: relative;
+    left: 25%;
 }
 
 .ads {
@@ -151,19 +149,101 @@ button {
     padding: 5px;
 }
 
+.centered {
+    text-align: center;
+}
 
+.modal {
+    display: none;
+    position: absolute;
+    z-index: 1; 
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+    
+}
+
+.modal-content {
+    background-color: white;
+    margin: auto;
+    padding: 20px;
+    border: 3px solid rgb(98, 98, 98);
+    border-radius: 10px;
+    width: 80%;
+    color: rgb(98, 98, 98);
+}
+
+.modal-header {
+    border-bottom: solid black 1px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.modal-header .close {
+    background-color: red;
+    height: 25px;
+    position: relative;
+    left: 55%;
+}
+
+.noborder {
+    border: none;
+    background-color: white;
+}
+
+.noborder:hover {
+    background-color: #6C6EA0;
+    transition: ease-in-out 500ms;
+}
+
+.createPostInput {
+    background-color: white;
+}
+
+.message {
+    background-color: #CCCCCC;
+    border: solid black 1px;
+    padding-left: 5px;
+    width: 97%;
+    display: flex;
+    margin: 5px;
+    border-radius: 1rem;
+}
+
+.message:hover {
+    background-color: white;
+}
+
+.message button {
+    background-color: red;
+    height: 100%;
+    position: relative;
+    text-align: right;
+}
+
+.closePost {
+    position: relative;
+    left: 50%;
+    background-color: red;
+}
 
 /* Ids */
+
+#CreatePost .modal-header {
+    border: none;
+}
 
 /* Media */
 
 /* 750px - 1000px */
 @media (max-width: 750px) {
-    .rightSideBar {
-        width: 50vw;
-    }
     .mainFeed {
-        width: 70vw;
+        width: 60vw;
     }
     
 }
@@ -173,13 +253,10 @@ button {
     .mainFeed {
         width: 75vw;
     }
-    .rightSideBar {
-        width: 75vw;
-    }
     .leftSideBar {
         width: 75vw;
     }
 
 }
 
-/* Phone? hor and vert */
+/* Phone? horiz and vert */

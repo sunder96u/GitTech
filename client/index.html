@@ -7,6 +7,7 @@
     <link href="style.css" rel="stylesheet">
     <link href="assets/icon.gif" rel="icon">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://kit.fontawesome.com/f5d8bbbeb2.js" crossorigin="anonymous"></script>
     <title>GitTech</title>
 </head>
 <body>
@@ -17,15 +18,15 @@
         </div>        
         <div class="search">
             <input class="searchbox" type="search">
-            <button>Search</button>
+            <button class="search">Search</button>
         </div>
         <div class="topNav">
             <ul>
-                <li>home</li>
-                <li>network</li>
-                <li>messages</li>
-                <li>notifications</li>
-                <li>profile</li>
+                <li><i class="fa-solid fa-house"></i>home</li>
+                <li><i class="fa-solid fa-circle-nodes"></i>network</li>
+                <li class="messages"><i class="fa-solid fa-envelope"></i>messages</li>
+                <li><i class="fa-solid fa-bell"></i>notifications</li>
+                <li><i class="fa-solid fa-circle-user"></i>profile</li>
             </ul>
         </div>
     </header>
@@ -38,9 +39,9 @@
                     <img class="profilePic" src="assets/profile picture.jpeg">
                 </div>
                 <div class="moreInfo">
-                    <a href="#"><h3>Connections:</h3></a>
-                    <a href="#"><h3>Views:</h3></a>
-                    <a href="#"><h3>Company:</h3></a>
+                    <a href="#"><h3>Connections: 1245</h3></a>
+                    <a href="#"><h3>Views: 5</h3></a>
+                    <a href="#"><h3>Company: <br> General Assembly</h3></a>
                     <a href="#"><h3>Groups:</h3></a>
                 </div>
             </div>
@@ -53,9 +54,9 @@
                 </div>
                 <div class="line"></div>
                 <div class="inputs">
-                    <button>Photo</button>
-                    <button>Video</button>
-                    <button>Article</button>
+                    <button class="noborder"><i class="fa-solid fa-camera"></i> Photo</button>
+                    <button class="noborder"><i class="fa-solid fa-film"></i> Video</button>
+                    <button class="noborder"><i class="fa-solid fa-newspaper"></i> Article</button>
                 </div>
             </div>
             <div class="line"> </div>
@@ -68,42 +69,101 @@
                             Post Time
                         </p>
                 </div>
-            <div class="content">
+                <div class="line"></div>
+                <div class="content">
                     <h1>Wonderfull stuff here</h1>
-            </div>
-            <div class="line"></div>
+                </div>
+                <div class="line"></div>
                 <div class="postFooter">
-                    <button>Like</button>
-                    <button>Comment</button>
-                    <button>Share</button>
-                    <button>Send</button>
+                    <button class="noborder"><i class="fa-regular fa-thumbs-up"></i> Like</button>
+                    <button class="noborder"><i class="fa-solid fa-comments"></i> Comment</button>
+                    <button class="noborder"><i class="fa-solid fa-share-from-square"></i> Share</button>
                 </div>
              </div>
-        </div>
-        <!--- Right side bar area --->
-        <div>
-            <div class="rightSideBar">
-                <div class="ads">
-                   <p>ad block here</p>
+             <div class="centered">
+                <div class="links">
+                    <a href="#">LinkedIn</a>
+                    <a href="#">github</a>
+                    <a href="#">contact</a>
                 </div>
-                <div class="ads">
-                   <p>ad block here</p>
+                <div class="footernotes">
+                    <p>Created by: Steven Underwood 2023</p>
                 </div>
-            </div>
-            <div class="links">
-                <a href="#">LinkedIn</a>
-                <a href="#">github</a>
-                <a href="#">contact</a>
-            </div>
-            <div class="footernotes">
-                <p>Created by:</p>
-                <p>Steven Underwood</p>
-                <p>2023</p>
-            </div>
+             </div>
         </div>
     </main>
 
 
 </body>
-<script src="script.js"></script>
+<div id="LoginModal" class="modal">
+    <div class="modal-content">
+        <h2>Login:</h2>
+    </div>
+</div>
+
+<div id="genModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close">&times;</button>
+            <h4>Messages</h4>
+        </div>
+        <div class="modal-body">
+            <div class="message">
+                <div>
+                    <p class="title">Sender Name:  Title:</p>
+               </div>
+               <div>
+                <p>limit to first line of message</p>
+               </div>
+               <div>
+                <button>Delete</button>
+               </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <div class="message">
+                <div>
+                    <p class="title">Sender Name:  Title:</p>
+               </div>
+               <div>
+                <p>limit to first line of message</p>
+               </div>
+               <div>
+                <button>Delete</button>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="CreatePost" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="closePost">&times;</button>
+        </div>
+        <div class="modal-body">
+                <input>
+                <div class="inputs">
+                    <button class="noborder"><i class="fa-solid fa-camera"></i> Photo</button>
+                    <button class="noborder"><i class="fa-solid fa-film"></i> Video</button>
+                    <button class="noborder"><i class="fa-solid fa-newspaper"></i> Article</button>
+                </div>
+        </div>
+    </div>
+</div>
+
+<div id="messageBodys" class="modal">
+    <div class="modal-content">
+        <button type="button" class="closeMessage">&times;</button>
+        <div class="modal-body">
+            <p>Some cool stuff here</p>
+            <div class="line"></div>   
+            <input placeholder = "reply">        
+        </div>
+    </div>
+
+</div>
+
+
+<script src="scripts.js"></script>
 </html>
