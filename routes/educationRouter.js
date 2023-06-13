@@ -1,5 +1,5 @@
 const Router = require('express').Router()
-const controller = require('../GitTech/controllers/educationController')
+const controller = require('../controllers/educationController')
 
 
 module.exports = Router

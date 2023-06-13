@@ -128,6 +128,14 @@ button {
     border: solid black 2px;
 }
 
+.myNewsFeed {
+    margin: 5px;
+    border-radius: 1rem;
+    padding: 5px;
+    background: white;
+    border: solid black 2px;
+}
+
 .descriptors {
     margin: 0;
     padding-left: 5px;
@@ -248,10 +256,105 @@ button {
     width: 25%;
     border-radius: 50%;
 }
+
+.postStats{
+    display: flex;
+    justify-content: space-evenly;
+    font-size: smaller;
+    color: grey;
+    padding: 0px;
+    margin: 0px;
+}
 /* Ids */
 
 #CreatePost .modal-header {
     border: none;
+}
+
+#LoginModal {
+    display: none;
+    position: absolute;
+    z-index: 1; 
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-image: url('assets/bigstock-Technology-Background-Modern-388206850-web-768x461.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+#LoginModal button {
+    background-color: Blue;
+    height: 50px;
+    width: 50%;
+    color: White;
+}
+
+.farRight {
+    position:absolute;
+    left: 80%;
+    font-size: 1.5rem;
+}
+
+.comment {
+    padding: 5px;
+    border: solid 1px black;
+    border-radius: 1rem;
+    background-color: whitesmoke;
+    margin: 5px;
+}
+
+.comment button {
+    background-color: whitesmoke
+}
+
+.card {
+    background-color: white;
+    margin: 5px;
+    border-radius: 1rem;
+    padding-left: 5px;
+    border: solid black 1px;
+}
+
+.personCard {
+    border: solid black 2px;
+    width: 30%;
+    border-radius: 1rem;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.personHeader {
+    height:60px;
+}
+
+.personBody {
+    position: relative;
+    top: -20%;
+}
+
+.personCard .background {
+    width: 100%;
+    border-radius: 1rem;
+
+}
+
+.personCard .icon {
+    position:relative;
+    top: -65px;
+    border-radius: 50%;
+}
+
+.buttons {
+    position: relative;
+    top: -25%;
+    text-align: center;
 }
 
 /* Media */

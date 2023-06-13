@@ -32,18 +32,11 @@
     </header>
     <!--- Main Body area --->
     <main>
+
+        
         <!--- Left side bar area--->
         <div>
             <div class="leftSideBar">
-                <div class="profileInfo backgroundImg">
-                    <img class="profilePic" src="assets/profile picture.jpeg">
-                </div>
-                <div class="moreInfo">
-                    <a href="../client/network.html"><h3>Connections: 1245</h3></a>
-                    <a href='#' class='profileView'><h3>Views: 5</h3></a>
-                    <a href="../client/company.html"><h3>Company: <br> General Assembly</h3></a>
-                    <a href="../client/group.html"><h3>Groups:</h3></a>
-                </div>
             </div>
         </div>
         <div class="mainFeed">
@@ -60,25 +53,7 @@
                 </div>
             </div>
             <div class="line"> </div>
-            <div class="feed">
-                <div class="topLine">
-                    <img src="assets/icon.gif" class="createIcon">
-                        <p class="descriptors">
-                            Authors name</br>
-                            Authors github link</br>
-                            Post Time
-                        </p>
-                </div>
-                <div class="line"></div>
-                <div class="content">
-                    <h1>Wonderfull stuff here</h1>
-                </div>
-                <div class="line"></div>
-                <div class="postFooter">
-                    <button class="noborder"><i class="fa-regular fa-thumbs-up"></i> Like</button>
-                    <button class="noborder"><i class="fa-solid fa-comments"></i> Comment</button>
-                    <button class="noborder"><i class="fa-solid fa-share-from-square"></i> Share</button>
-                </div>
+            <div class="newsFeed">
              </div>
              <div class="centered">
                 <div class="links">
@@ -96,76 +71,19 @@
 
 </body>
 <div id="LoginModal" class="modal">
-    <div class="modal-content">
-        <h2>Login:</h2>
-    </div>
 </div>
 
 <div id="genModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close">&times;</button>
-            <h4>Messages</h4>
-        </div>
-        <div class="modal-body">
-            <div class="message">
-                <div>
-                    <p class="title">Sender Name:  Title:</p>
-               </div>
-               <div>
-                <p>limit to first line of message</p>
-               </div>
-               <div>
-                <button>Delete</button>
-               </div>
-            </div>
-        </div>
-        <div class="modal-body">
-            <div class="message">
-                <div>
-                    <p class="title">Sender Name:  Title:</p>
-               </div>
-               <div>
-                <p>limit to first line of message</p>
-               </div>
-               <div>
-                <button>Delete</button>
-               </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <div id="CreatePost" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="closePost">&times;</button>
-        </div>
-        <div class="modal-body">
-                <input>
-                <div class="inputs">
-                    <button class="noborder"><i class="fa-solid fa-camera"></i> Photo</button>
-                    <button class="noborder"><i class="fa-solid fa-film"></i> Video</button>
-                    <button class="noborder"><i class="fa-solid fa-newspaper"></i> Article</button>
-                </div>
-        </div>
-    </div>
 </div>
 
 <div id="messageBodys" class="modal">
-    <div class="modal-content">
-        <button type="button" class="closeMessage">&times;</button>
-        <div class="modal-body">
-            <p>Some cool stuff here</p>
-            <div class="line"></div>   
-            <input placeholder = "reply">        
-        </div>
-    </div>
-
 </div>
 
 <div id="profileViewModal" class="modal">
-    <div class="modal-content">
+    <!-- <div class="modal-content">
         <div class="modal-header">
             <h3>Profile Views:</h3>
             <button type="button" class="closeProfile">&times;</button>
@@ -173,9 +91,9 @@
         <div class="modal-body">
             <div>Make card for each view</div>
         </div>
-    </div>
+    </div> -->
 </div>
 
-
 <script src="scripts.js"></script>
+<script src="JavaScript/indexJS.js"></script>
 </html>
