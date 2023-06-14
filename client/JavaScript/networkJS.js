@@ -41,9 +41,6 @@ buildLeftSideBar = async () => {
     user = myUser
     const connections = await axios.get(`http://localhost:3001/api/connection/${myUser.data._id}`)
     const views = await axios.get(`http://localhost:3001/api/profileView/${myUser.data._id}`)
-    const company = await axios.get(`http://localhost:3001/api/company/${myUser.data._id}`)
-    const myCompany = company.data.name
-    const groups = await axios.get(`http://localhost:3001/api/group/${myUser.data._id}`)
 
     leftSideBar.innerHTML = `
     <div class="profileInfo backgroundImg">
@@ -53,8 +50,6 @@ buildLeftSideBar = async () => {
     <p>${myUser.data.firstName} ${myUser.data.lastName}</p>
         <a href="../client/network.html"><h3>Connections: ${connections.data.length}</h3></a>
         <a href='#' class='profileView'><h3>Views: ${views.data.length}</h3></a>
-        <a href="../client/company.html"><h3>Company: <br> ${myCompany}</h3></a>
-        <a href="../client/group.html"><h3>Groups:</h3> <p>${groups}</p></a>
     </div>`
 
     const profileViewers = document.querySelector('.profileView')
@@ -140,8 +135,7 @@ buildConnections = async () => {
             </div>
             <div class="personBody">
             <p>${myConnections.data[i].firstName} ${myConnections.data[i].lastName} </br>
-            GitHub </br>
-            Company</p>
+            GitHub </p>
             </div>
             `
             myCons.appendChild(div)
@@ -293,29 +287,6 @@ buildMessage = async () => {
     }
 }
 
-buildProfileViewsModal = async () => {
-    const profileViews = document.getElementById('profileViewModal')
-    profileViews.innerHTML = `
-    <div class="modal-content">
-    <div class="modal-header">
-        <h3>Profile Views:</h3>
-        <button type="button" class="closeProfile">&times;</button>
-    </div>
-    <div class="modal-body">
-        <div>Make card for each view</div>
-    </div>
-    </div>`
-    const closeProfile = document.querySelector('.closeProfile')
-    closeProfile.onclick = () => {
-        profileViews.style.display = 'none'
-    }
-
-    window.onclick = function(e) {
-        if (e.target == profileViews) {
-            profileViews.style.display = 'none'
-        }
-    }
-}
 
 headerNotifications = async () => {
 

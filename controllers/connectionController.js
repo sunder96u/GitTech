@@ -27,7 +27,7 @@ const newConnection = async (req, res) => {
             const newconnection = await Connection.create({
                 userId: req.query.userId,
                 connectionId: req.query.connection,
-                accepted: false
+                accepted: true
             })
         }
 

@@ -40,12 +40,11 @@ buildLeftSideBar = async () => {
     const leftSideBar = document.querySelector('.leftSideBar')
     const myUser = await axios.get(`http://localhost:3001/api/user/${harduser}`)
     user = myUser
+    window.localStorage.setItem('currentUser', JSON.stringify(user.data._id))
+    window.localStorage.setItem('viewedUser', JSON.stringify(user.data._id))
     GitTech.currentUser = user
     const connections = await axios.get(`http://localhost:3001/api/connection/${myUser.data._id}`)
     const views = await axios.get(`http://localhost:3001/api/profileView/${myUser.data._id}`)
-    const company = await axios.get(`http://localhost:3001/api/company/${myUser.data._id}`)
-    const myCompany = company.data.name
-    const groups = await axios.get(`http://localhost:3001/api/group/${myUser.data._id}`)
 
     leftSideBar.innerHTML = `
     <div class="profileInfo backgroundImg">
@@ -55,8 +54,6 @@ buildLeftSideBar = async () => {
     <p>${myUser.data.firstName} ${myUser.data.lastName}</p>
         <a href="../client/network.html"><h3>Connections: ${connections.data.length}</h3></a>
         <a href='#' class='profileView'><h3>Views: ${views.data.length}</h3></a>
-        <a href="../client/company.html"><h3>Company: <br> ${myCompany}</h3></a>
-        <a href="../client/group.html"><h3>Groups:</h3> <p>${groups}</p></a>
     </div>`
 
     const profile = document.querySelector('.profilePic')

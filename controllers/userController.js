@@ -11,7 +11,13 @@ const findUserById = async (req, res) => {
     res.json(user)
 }
 
+const editUser = async (req, res) => {
+    const edit = await User.findByIdAndUpdate(req.query.userId, {[req.query.whatToUpdate]: req.query.update})
+    res.json(edit)
+}
+
 module.exports = {
     findUsers,
-    findUserById
+    findUserById,
+    editUser
 }
