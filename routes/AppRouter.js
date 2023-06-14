@@ -1,4 +1,5 @@
 const Router = require('express').Router()
+const passport = require('passport')
 
 const commentLikesRouter = require('./commentLikesRouter')
 const commentsRouter = require('./commentsRouter')
@@ -32,6 +33,22 @@ Router.use('/school', schoolsRouter)
 Router.use('/skill', skillsRouter)
 Router.use('/user', userRouter)
 
+Router.get('/githubauthroute', passport.authenticate(
+    'github', {
+        scope: ['profile', 'email']
+    }
+))
+Router.get('/callback', passport.authenticate(
+    'github', {
+        successRedirect: '/user',
+        failureRedirect: '/user'
+    }
+))
 
+Router.get('/logout', function (req, res) {
+    req.logout(function() {
+        res.redirect('/user')
+    })
+})
 
 module.exports = Router
