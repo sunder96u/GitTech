@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-//const uri = "mongodb+srv://Underdog96u:JYDDevhGRF9qmwl3@gittech.hinqbut.mongodb.net/?retryWrites=true&w=majority"
 const mongoURI = process.env.DATABASE_URL
 
 

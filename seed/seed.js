@@ -55,19 +55,19 @@ const post = async () => {
     await Post.insertMany(newpost)
 }
 
-const postLike = async () => {
-    const posts = await Post.find()
-    const users = await User.find()
+// const postLike = async () => {
+//     const posts = await Post.find()
+//     const users = await User.find()
 
-    const newPostLike = [
-        {
-            userId: users[0]._id,
-            postId: posts[0]._id,
-            date: "2023"
-        }
-    ]
-    await PostLike.insertMany(newPostLike)
-}
+//     const newPostLike = [
+//         {
+//             userId: users[0]._id,
+//             postId: posts[0]._id,
+//             date: "2023"
+//         }
+//     ]
+//     await PostLike.insertMany(newPostLike)
+// }
 
 const comment = async () => {
     const users = await User.find()
@@ -108,11 +108,11 @@ const company = async () => {
 
 
 const run = async () => {
-    // await main()
-    // await post()
-     await postLike()
-    // await comment()
-    // await company()
+     // await main()
+     // await post()
+     // await postLike()
+     await comment()
+     await company()
     db.close()
 }
 
