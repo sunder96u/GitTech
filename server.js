@@ -1,6 +1,6 @@
 const express = require('express')
 const db = require('./db')
-const PORT = process.env.PORT || 3001
+// const PORT = process.env.PORT || 3001
 const AppRouter = require('./routes/AppRouter')
 const cors = require('cors')
 
@@ -13,6 +13,10 @@ app.get('/', (req, res) => {
 })
 app.set('port', process.env.PORT || 8000)
 app.use('/api', AppRouter)
+
+console.log(process.env.PORT)
+
+
 app.listen(app.get('port'), () => {
-    console.log(`port: ${PORT}`)
+    console.log(`port: ${app.get('port')} `)
 })

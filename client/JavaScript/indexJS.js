@@ -35,7 +35,7 @@ buildPage = async () => {
 }
 
 buildLeftSideBar = async () => {
-    const harduser = `64876aee1a364ca921525b03`
+    const harduser = `6489cf8c53aaf6f85a935d49`
 
     const leftSideBar = document.querySelector('.leftSideBar')
     const myUser = await axios.get(`http://localhost:3001/api/user/${harduser}`)
