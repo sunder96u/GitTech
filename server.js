@@ -11,7 +11,8 @@ app.use(express.json())
 app.get('/', (req, res) => {
     res.json('I am Groot!')
 })
+app.set('port', process.env.PORT || 8000)
 app.use('/api', AppRouter)
-app.listen(PORT, () => {
-    console.log(`Express server on port: ${PORT}`)
+app.listen(app.get('port'), () => {
+    console.log(`port: ${PORT}`)
 })

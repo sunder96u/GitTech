@@ -20,7 +20,7 @@ const share = document.querySelector('.share')
 const send = document.querySelector('.send')
 const messageBody = document.querySelector('.messageBody')
 
-let user = {};
+let user = JSON.parse(window.localStorage.getItem('currentUser'))
 
 /* Functions */
 buildPage = async () => {
@@ -36,10 +36,8 @@ buildPage = async () => {
 }
 
 buildLeftSideBar = async () => {
-    const harduser = `64876aee1a364ca921525b03`
-
     const leftSideBar = document.querySelector('.leftSideBar')
-    const myUser = await axios.get(`http://localhost:3001/api/user/${harduser}`)
+    const myUser = await axios.get(`http://localhost:3001/api/user/${user}`)
     user = myUser
     const connections = await axios.get(`http://localhost:3001/api/connection/${myUser.data._id}`)
     const views = await axios.get(`http://localhost:3001/api/profileView/${myUser.data._id}`)
@@ -62,7 +60,6 @@ buildLeftSideBar = async () => {
     const profileViewers = document.querySelector('.profileView')
     profileViewers.onclick = () => {
     buildProfileViewsModal()
-    console.log('profile views clicked')
     const modal = document.getElementById('profileViewModal')
     modal.style.display = 'block'
 }
@@ -70,10 +67,11 @@ buildLeftSideBar = async () => {
 
 buildPendingInvites = async () => {
     const pending = document.querySelector('.pendingInvites')
+    const pendingconnection = await axios.get(`http://localhost:3001/api/connection/pending/${user}`)
+    const pendingCon = await axios.get(`http://localhost:3001/api/connection/myinvites/${user.data._id}`)
     pending.innerHTML = ""
-    pendingInvites = 1
 
-    if (pendingInvites === 0) {
+    if (pendingconnection.data.length === 0) {
         pending.innerHTML = `
         <div class="card">
         <h3>No pending invites</h1>
@@ -83,33 +81,42 @@ buildPendingInvites = async () => {
         <div class="card">
         <div><h3> My pending invites:</h3></div>
         <div class="line"></div>
-            <div class="personCard">
-                <div class="personHeader">
-                <img class="background" src="assets/bigstock-Technology-Background-Modern-388206850-web-768x461.jpg">
-                <img class="icon" src="assets/profile picture.jpeg">
-                </div>
-                <div class="personBody">
-                <p>Person's Name </br>
-                GitHub </br>
-                Company</p>
-                </div>
-                <div class="buttons">
-                <button>Accept</button>
-                <button>Delete</button>
-                </div>
+            <div class="invites">
             </div>
-        </div>
-        `
+        </div>`
+        const invites = document.querySelector('.invites')
+        for (let i = 0; i < pendingconnection.data.length; i++)
+        {
+            const div = document.createElement('div')
+            div.classList.add('personCard')
+            div.innerHTML = `
+            <div class="personCard">
+            <div class="personHeader">
+            <img class="background" src="assets/bigstock-Technology-Background-Modern-388206850-web-768x461.jpg">
+            <img class="icon" src="${pendingCon.data[i].photo}">
+            </div>
+            <div class="personBody">
+            <p>${pendingCon.data[i].firstName} ${pendingCon.data[i].lastName} </br>
+            GitHub </br>
+            Company</p>
+            </div>
+            <div class="buttons">
+            <button>Accept</button>
+            <button>Delete</button>
+            </div>
+            `
+        }
     }
-
 }
 
 buildConnections = async () => {
     const connections = document.querySelector('.connections')
+    const connection = await axios.get(`http://localHost:3001/api/connection/${user}`)
+    const myConnections = await axios.get(`http://localHost:3001/api/connection/myconnections/${user.data._id}`)
     connections.innerHTML = ''
-    myconnections = 1
 
-    if (myconnections === 0) {
+
+    if (connection.data.length === 0) {
         connections.innerHTML = `
         <div class="card">
         <h1>Go make some friends! Find people to connect with</h1>
@@ -119,32 +126,36 @@ buildConnections = async () => {
         <div class="card">
         <div><h3> My connections:</h3></div>
         <div class="line"></div>
-        <div class="personCard">
+        <div class="myCons">
+        </div>
+        </div>`
+        const myCons = document.querySelector('.myCons')
+        for (let i = 0; i < connection.data.length; i++) {
+            const div = document.createElement('div')
+            div.classList.add('personCard')
+            div.innerHTML = `
             <div class="personHeader">
             <img class="background" src="assets/bigstock-Technology-Background-Modern-388206850-web-768x461.jpg">
-            <img class="icon" src="assets/profile picture.jpeg">
+            <img class="icon" src="${myConnections.data[i].photo}">
             </div>
             <div class="personBody">
-            <p>Person's Name </br>
+            <p>${myConnections.data[i].firstName} ${myConnections.data[i].lastName} </br>
             GitHub </br>
             Company</p>
             </div>
-            <div class="buttons">
-            <button>Accept</button>
-            <button>Delete</button>
-            </div>
-        </div>
-        </div>
-        `
+            `
+            myCons.appendChild(div)
+        }        
     }
 
 }
 
 buildInNetwork = async () => {
     const inNetwork = document.querySelector('.mayKnow')
-    inMyNetwork = 1
+    const users = await axios.get(`http://localhost:3001/api/connection`)
+    const connections = []
 
-    if(inMyNetwork === 0) {
+    if(users === 0) {
         inNetwork.innerHTML = `
         <div class="card">
         <h1> You know all your connections connections! Amazing job!</h1>
@@ -154,23 +165,37 @@ buildInNetwork = async () => {
         <div class="card">
         <div><h3>People you might know:</h3></div>
         <div class="line"></div>
-        <div class="personCard">
+        <div class="mightKnow">
+        </div>
+        </div>
+        </div>`
+        const mightKnow = document.querySelector('.mightKnow')
+        for (let i = 0; i < users.data.length; i++) {
+            const div = document.createElement('div')
+            div.classList.add('personCard')
+            div.innerHTML = `
             <div class="personHeader">
             <img class="background" src="assets/bigstock-Technology-Background-Modern-388206850-web-768x461.jpg">
-            <img class="icon" src="assets/profile picture.jpeg">
+            <img class="icon" src="${users.data[i].photo}">
             </div>
             <div class="personBody">
-            <p>Person's Name </br>
+            <p>${users.data[i].firstName} ${users.data[i].lastName} </br>
             GitHub </br>
             Company</p>
             </div>
-            <div class="buttons">
-            <button>Accept</button>
-            <button>Delete</button>
-            </div>
-        </div>
-    </div>
-    `
+            <button class="connect">connect</button>
+            `
+            mightKnow.appendChild(div)
+            connections.push(users.data[i]._id)
+            const connect = document.querySelectorAll('.connect')
+            for (let k = 0; k < connect.length; k++) {
+                connect[k].onclick = async () => {
+                    for (let l = 0; l < connections.length; l++) {
+                        const connectTo = await axios.post(`http://localhost:3001/api/connection/add?userId=${user.data._id}&connection=${connections[k]}&accepted=true`)
+                    }
+                }
+            }
+        }
     }
 
 }

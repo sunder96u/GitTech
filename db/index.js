@@ -1,9 +1,12 @@
 const mongoose = require('mongoose')
+//const uri = "mongodb+srv://Underdog96u:JYDDevhGRF9qmwl3@gittech.hinqbut.mongodb.net/?retryWrites=true&w=majority"
+const mongoURI = process.env.DATABASE_URL
+
 
 mongoose
-    .connect('mongodb://127.0.0.1:27017/GitTechDatabase')
+    .connect(process.env.DATABASE_URL)
     .then(() => {
-        console.log('Successfully connected to MongoDB')
+        console.log(`Successfully connected to MongoDB`)
     })
     .catch((e) => {
         console.error('Connection error', e.message)

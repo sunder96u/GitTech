@@ -357,6 +357,18 @@ button {
     text-align: center;
 }
 
+.mightKnow {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.myCons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 /* Media */
 
 /* 750px - 1000px */

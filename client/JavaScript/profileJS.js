@@ -20,9 +20,11 @@ const share = document.querySelector('.share')
 const send = document.querySelector('.send')
 const messageBody = document.querySelector('.messageBody')
 
-let user = '';
-const currentUser = ""
-const profileView = ""
+let currentUser = window.localStorage.getItem('currentUser')
+let viewedUser = window.localStorage.getItem('viewedUser')
+console.log(`${currentUser} currentUser`)
+console.log(`${viewedUser} viewedUser`)
+
 
 /* Functions */
 buildPage = async () => {
@@ -37,42 +39,10 @@ buildPage = async () => {
     buildSkills()
 }
 
-// buildLeftSideBar = async () => {
-//     const harduser = `64876aee1a364ca921525b03`
-
-//     const leftSideBar = document.querySelector('.leftSideBar')
-//     const myUser = await axios.get(`http://localhost:3001/api/user/${harduser}`)
-//     user = myUser
-//     const connections = await axios.get(`http://localhost:3001/api/connection/${myUser.data._id}`)
-//     const views = await axios.get(`http://localhost:3001/api/profileView/${myUser.data._id}`)
-//     const company = await axios.get(`http://localhost:3001/api/company/${myUser.data._id}`)
-//     const myCompany = company.data.name
-//     const groups = await axios.get(`http://localhost:3001/api/group/${myUser.data._id}`)
-
-//     leftSideBar.innerHTML = `
-//     <div class="profileInfo backgroundImg">
-//         <img class="profilePic" src="${myUser.data.photo}">
-//     </div>
-//     <div class="moreInfo">
-//     <p>${myUser.data.firstName} ${myUser.data.lastName}</p>
-//         <a href="../client/network.html"><h3>Connections: ${connections.data.length}</h3></a>
-//         <a href='#' class='profileView'><h3>Views: ${views.data.length}</h3></a>
-//         <a href="../client/company.html"><h3>Company: <br> ${myCompany}</h3></a>
-//         <a href="../client/group.html"><h3>Groups:</h3> <p>${groups}</p></a>
-//     </div>`
-
-//     const profileViewers = document.querySelector('.profileView')
-//     profileViewers.onclick = () => {
-//     buildProfileViewsModal()
-//     console.log('profile views clicked')
-//     const modal = document.getElementById('profileViewModal')
-//     modal.style.display = 'block'
-// }
-// }
 buildProfile = async () => {
     const profile = document.querySelector('.profile')
 
-    if (currentUser === user){
+    if (viewedUser === currentUser){
         profile.innerHTML = `
         <div class=backgroundImg>
             <img src="assets/profile picture.jpeg">
@@ -111,7 +81,7 @@ buildProfile = async () => {
 buildExperience = async () => {
     const experience = document.querySelector('.experience')
 
-    if (currentUser === user) {
+    if (viewedUser === currentUser) {
         experience.innerHTML = `
         <div class="expheader">
             <h3>Experience:</h3>
@@ -140,7 +110,7 @@ buildExperience = async () => {
 buildProjects = async () => {
     const project = document.querySelector('.myproject')
 
-    if (currentUser === user) {
+    if (viewedUser === currentUser) {
         project.innerHTML = `
         <div class="expheader">
             <h3>Projects:</h3>
@@ -167,7 +137,7 @@ buildProjects = async () => {
 buildSkills = async () => {
     const skill = document.querySelector('.skill')
 
-    if (currentUser === user) {
+    if (viewedUser === currentUser) {
         skill.innerHTML = `
         <div class="expheader">
             <h3>Skills:</h3>

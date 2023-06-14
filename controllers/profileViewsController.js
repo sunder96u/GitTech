@@ -8,6 +8,27 @@ const getViews = async (req, res) => {
 
 }
 
+const addView = async (req, res) => {
+// check if profileview already exists
+// if exists do nothing
+// if not create new view
+    const { userId } = req.query.userId
+    const profile = await ProfileView.find({ userId: req.query.userId, viewedUser: req.query.viewed})
+    console.log(`${profile}`)
+
+    if(profile) {
+        const newView = await ProfileView.create({
+            userId: req.query.userId,
+            viewedUser: req.query.viewed,
+            date: req.query.date
+        })
+        console.log(newView)
+    }
+    
+
+}
+
 module.exports = {
-    getViews
+    getViews,
+    addView
 }

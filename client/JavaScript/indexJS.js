@@ -22,6 +22,7 @@ const messageBody = document.querySelector('.messageBody')
 
 let user = {};
 
+
 /* Functions */
 buildPage = async () => {
     // if (user.length === undefined) {
@@ -39,6 +40,7 @@ buildLeftSideBar = async () => {
     const leftSideBar = document.querySelector('.leftSideBar')
     const myUser = await axios.get(`http://localhost:3001/api/user/${harduser}`)
     user = myUser
+    GitTech.currentUser = user
     const connections = await axios.get(`http://localhost:3001/api/connection/${myUser.data._id}`)
     const views = await axios.get(`http://localhost:3001/api/profileView/${myUser.data._id}`)
     const company = await axios.get(`http://localhost:3001/api/company/${myUser.data._id}`)
@@ -57,13 +59,17 @@ buildLeftSideBar = async () => {
         <a href="../client/group.html"><h3>Groups:</h3> <p>${groups}</p></a>
     </div>`
 
+    const profile = document.querySelector('.profilePic')
+    profile.onclick = () => {
+        location.href="./profile.html"
+    }
+
     const profileViewers = document.querySelector('.profileView')
     profileViewers.onclick = () => {
     buildProfileViewsModal()
-    console.log('profile views clicked')
     const modal = document.getElementById('profileViewModal')
     modal.style.display = 'block'
-}
+    }
 }
 
 buildNewsFeed = async () => {
@@ -74,6 +80,7 @@ buildNewsFeed = async () => {
     let currentComment = []
     let postComment = []
     let commentComment = []
+    let currentPostUser = []
     
     for (let i = 0; i < feed.data.length; i++) {
         let postUser = await axios.get(`http://localhost:3001/api/user/${feed.data[i].userId}`)
@@ -144,15 +151,24 @@ buildNewsFeed = async () => {
             newsFeed.appendChild(div)
         }
         currentPost.push(`${feed.data[i]._id}`)
+        currentPostUser.push(postUser.data._id)
+        const profile = document.querySelectorAll('.createIcon')
+        for (let j = 0; j < profile.length; j++) {
+            profile[j].onclick = async () => {
+                for (let k = 0; k < currentPostUser.length; k++) {
+                    window.localStorage.setItem('viewedUser', JSON.stringify(currentPostUser[j-1]))
+                    window.localStorage.setItem('currentUser', JSON.stringify(user.data._id))
+                    location.href="./profile.html"
+                    await axios.put(`http://localhost:3001/api/profileView?userId=${user.data._id}&viewed=${currentPostUser[j-1]}&date=${currentDate}`)
+                }
+            }
+        }
 
         const like = document.querySelectorAll('.likeBtn')
         for (let j = 0; j < like.length; j++){
             like[j].onclick = () => {
-                console.log(`like button clicked ${j}`)
-                console.log(`${currentPost[j]}`)
                 addLike = async () => {
-                    const thisLike = await axios.put(`http://localhost:3001/api/postLike?postId=${currentPost[j]}&userId=${user.data._id}&date=${currentDate}`)
-                    
+                    const thisLike = await axios.put(`http://localhost:3001/api/postLike?postId=${currentPost[j]}&userId=${user.data._id}&date=${currentDate}`) 
                 }
                 addLike()
                 buildNewsFeed()
@@ -408,7 +424,25 @@ buildProfileViewsModal = async () => {
         <button type="button" class="closeProfile">&times;</button>
     </div>
     <div class="modal-body">
-        <div>Make card for each view</div>
+    <div class="card">
+    <div><h3> My connections:</h3></div>
+    <div class="line"></div>
+    <div class="personCard">
+        <div class="personHeader">
+        <img class="background" src="assets/bigstock-Technology-Background-Modern-388206850-web-768x461.jpg">
+        <img class="icon" src="assets/profile picture.jpeg">
+        </div>
+        <div class="personBody">
+        <p>Person's Name </br>
+        GitHub </br>
+        Company</p>
+        </div>
+        <div class="buttons">
+        <button>Accept</button>
+        <button>Delete</button>
+        </div>
+    </div>
+    </div>
     </div>
     </div>`
     const closeProfile = document.querySelector('.closeProfile')
