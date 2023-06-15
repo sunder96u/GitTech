@@ -7,7 +7,7 @@ const logger = require('morgan')
 const session = require('express-session')
 const passport = require('passport')
 require('./passport')
-//require('dotenv').config()
+require('dotenv').config()
 
 const app = express()
 app.use(cors())
