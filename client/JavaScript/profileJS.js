@@ -36,7 +36,7 @@ buildPage = async () => {
 
 buildProfile = async () => {
     const profile = document.querySelector('.profile')
-    const user = await axios.get(`https://polar-spire-94788.herokuapp.com/api/user/${viewedUser}`)
+    const user = await axios.get(`https://gittech-production.up.railway.app/api/user/${viewedUser}`)
 
     if (viewedUser === currentUser){
         profile.innerHTML = `
@@ -107,7 +107,7 @@ buildProfile = async () => {
         input.onkeydown = async () => {
             if (event.keyCode === 13) {
                 modal.style.display = 'none'
-                await axios.put(`https://polar-spire-94788.herokuapp.com/api/user/edit?userId=${currentUser}&whatToUpdate=photo&update=${input.value}`)
+                await axios.put(`https://gittech-production.up.railway.app/api/user/edit?userId=${currentUser}&whatToUpdate=photo&update=${input.value}`)
                 buildPage()
             }
         }
@@ -141,7 +141,7 @@ buildProfile = async () => {
         inputFirst.onkeydown = async () => {
             if (event.keyCode === 13) {
                 modal.style.display = 'none'
-                await axios.put(`https://polar-spire-94788.herokuapp.com/api/user/edit?userId=${currentUser}&whatToUpdate=firstName&update=${input.value}`)
+                await axios.put(`https://gittech-production.up.railway.app/api/user/edit?userId=${currentUser}&whatToUpdate=firstName&update=${input.value}`)
                 buildPage()
             }
         }
@@ -150,7 +150,7 @@ buildProfile = async () => {
         inputLast.onkeydown = async () => {
             if (event.keyCode === 13) {
                 modal.style.display = 'none'
-                await axios.put(`https://polar-spire-94788.herokuapp.com/api/user/edit?userId=${currentUser}&whatToUpdate=lastName&update=${input.value}`)
+                await axios.put(`https://gittech-production.up.railway.app/api/user/edit?userId=${currentUser}&whatToUpdate=lastName&update=${input.value}`)
                 buildPage()
             }
         }
@@ -182,7 +182,7 @@ buildProfile = async () => {
         input.onkeydown = async () => {
             if (event.keyCode === 13) {
                 modal.style.display = 'none'
-                await axios.put(`https://polar-spire-94788.herokuapp.com/api/user/edit?userId=${currentUser}&whatToUpdate=website&update=${input.value}`)
+                await axios.put(`https://gittech-production.up.railway.app/api/user/edit?userId=${currentUser}&whatToUpdate=website&update=${input.value}`)
                 buildPage()
             }
         }
@@ -215,7 +215,7 @@ buildProfile = async () => {
             if (event.keyCode === 13) {
                 buildPage()
                 modal.style.display = 'none'
-                //await axios.put(`https://polar-spire-94788.herokuapp.com/api/user/edit?userId=${currentUser}&whatToUpdate=firstName&update=${input.value}`)
+                //await axios.put(`https://gittech-production.up.railway.app/api/user/edit?userId=${currentUser}&whatToUpdate=firstName&update=${input.value}`)
             }
         }
     }
@@ -244,7 +244,7 @@ buildProfile = async () => {
         input.onkeydown = async () => {
             if (event.keyCode === 13) {
                 modal.style.display = 'none'
-                await axios.put(`https://polar-spire-94788.herokuapp.com/api/user/edit?userId=${currentUser}&whatToUpdate=description&update=${input.value}`)
+                await axios.put(`https://gittech-production.up.railway.app/api/user/edit?userId=${currentUser}&whatToUpdate=description&update=${input.value}`)
                 buildPage()
             }
         }
@@ -255,7 +255,7 @@ buildProfile = async () => {
 
 buildExperience = async () => {
     const experience = document.querySelector('.experience')
-    const exp = await axios.get(`https://polar-spire-94788.herokuapp.com/api/experience/${viewedUser}`)
+    const exp = await axios.get(`https://gittech-production.up.railway.app/api/experience/${viewedUser}`)
 
     if (viewedUser === currentUser) {
         experience.innerHTML = `
@@ -344,14 +344,14 @@ buildExperience = async () => {
         input.onkeydown = async () => {
             if (event.keyCode === 13) {
                 modal.style.display = 'none'
-                await axios.post(`https://polar-spire-94788.herokuapp.com/api/experience?userId={currentUser}&startMonth=${sMonth.value}&startYear=${sYear.value}&endMonth=${eMonth.value}&eYear=${eYear.value}&company=${comp.value}&position=${position.value}&duties=${input.value}`)
+                await axios.post(`https://gittech-production.up.railway.app/api/experience?userId={currentUser}&startMonth=${sMonth.value}&startYear=${sYear.value}&endMonth=${eMonth.value}&eYear=${eYear.value}&company=${comp.value}&position=${position.value}&duties=${input.value}`)
                 buildPage()
             }
         }
         const submit = document.querySelector('.submit')
         submit.onclick = async () => {
             modal.style.display = 'none'
-            await axios.post(`https://polar-spire-94788.herokuapp.com/api/experience?userId={currentUser}&startMonth=${sMonth.value}&startYear=${sYear.value}&endMonth=${eMonth.value}&eYear=${eYear.value}&company=${comp.value}&position=${position.value}&duties=${input.value}`)
+            await axios.post(`https://gittech-production.up.railway.app/api/experience?userId={currentUser}&startMonth=${sMonth.value}&startYear=${sYear.value}&endMonth=${eMonth.value}&eYear=${eYear.value}&company=${comp.value}&position=${position.value}&duties=${input.value}`)
             buildPage()
         }
     }
@@ -360,7 +360,7 @@ buildExperience = async () => {
 
 buildProjects = async () => {
     const project = document.querySelector('.myproject')
-    const exp = await axios.get(`https://polar-spire-94788.herokuapp.com/api/project/${viewedUser}`)
+    const exp = await axios.get(`https://gittech-production.up.railway.app/api/project/${viewedUser}`)
 
     if (viewedUser === currentUser) {
         project.innerHTML = `
@@ -453,14 +453,14 @@ buildProjects = async () => {
         input.onkeydown = async () => {
             if (event.keyCode === 13) {
                 modal.style.display = 'none'
-                await axios.post(`https://polar-spire-94788.herokuapp.com/api/projects?userId=${currentUser}&name=${proname.value}&github=${github.value}&website=${website.value}`)
+                await axios.post(`https://gittech-production.up.railway.app/api/projects?userId=${currentUser}&name=${proname.value}&github=${github.value}&website=${website.value}`)
                 buildPage()
             }
         }
         const submit = document.querySelector('.submit')
         submit.onclick = async () => {
             modal.style.display = 'none'
-            await axios.post(`https://polar-spire-94788.herokuapp.com/api/projects?userId=${currentUser}&name=${proname.value}&github=${github.value}&website=${website.value}`)
+            await axios.post(`https://gittech-production.up.railway.app/api/projects?userId=${currentUser}&name=${proname.value}&github=${github.value}&website=${website.value}`)
             buildPage()
         }
     }
@@ -468,7 +468,7 @@ buildProjects = async () => {
 
 buildSkills = async () => {
     const skill = document.querySelector('.skill')
-    const skills = await axios.get(`https://polar-spire-94788.herokuapp.com/api/skill/${viewedUser}`)
+    const skills = await axios.get(`https://gittech-production.up.railway.app/api/skill/${viewedUser}`)
 
     if (viewedUser === currentUser) {
         skill.innerHTML = `
@@ -518,7 +518,7 @@ buildSkills = async () => {
                     skillsinput.onkeydown = async () => {
                         if (event.keyCode === 13) {
                             modal.style.display = 'none'
-                            await axios.put(`https://polar-spire-94788.herokuapp.com/api/skill/edit?userId=${currentUser}&whatToUpdate=skillname&update=${skillsinput.value}`)
+                            await axios.put(`https://gittech-production.up.railway.app/api/skill/edit?userId=${currentUser}&whatToUpdate=skillname&update=${skillsinput.value}`)
                             buildPage()
                         }
                     }
@@ -571,7 +571,7 @@ buildSkills = async () => {
         input.onkeydown = async () => {
             if (event.keyCode === 13) {
                 modal.style.display = 'none'
-                await axios.post(`https://polar-spire-94788.herokuapp.com/api/skill?userId=${currentUser}&skillname=${input.value}`)
+                await axios.post(`https://gittech-production.up.railway.app/api/skill?userId=${currentUser}&skillname=${input.value}`)
                 buildPage()
             }
         }
@@ -580,7 +580,7 @@ buildSkills = async () => {
 
 
 buildMessagesModal = async () => {
-    // const message = await axios.get(`https://polar-spire-94788.herokuapp.com/api/message/${user.data._id}`)
+    // const message = await axios.get(`https://gittech-production.up.railway.app/api/message/${user.data._id}`)
 
     // we are here
     // for (let j = 0; j < message.data.length; j++)

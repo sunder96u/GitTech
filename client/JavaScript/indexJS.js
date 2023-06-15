@@ -38,13 +38,13 @@ buildLeftSideBar = async () => {
     const harduser = `6489cf8c53aaf6f85a935d49`
 
     const leftSideBar = document.querySelector('.leftSideBar')
-    const myUser = await axios.get(`https://polar-spire-94788.herokuapp.com/api/user/${harduser}`)
+    const myUser = await axios.get(`https://gittech-production.up.railway.app/api/user/${harduser}`)
     user = myUser
     window.localStorage.setItem('currentUser', JSON.stringify(user.data._id))
     window.localStorage.setItem('viewedUser', JSON.stringify(user.data._id))
     GitTech.currentUser = user
-    const connections = await axios.get(`https://polar-spire-94788.herokuapp.com/api/connection/${myUser.data._id}`)
-    const views = await axios.get(`https://polar-spire-94788.herokuapp.com/api/profileView/${myUser.data._id}`)
+    const connections = await axios.get(`https://gittech-production.up.railway.app/api/connection/${myUser.data._id}`)
+    const views = await axios.get(`https://gittech-production.up.railway.app/api/profileView/${myUser.data._id}`)
 
     leftSideBar.innerHTML = `
     <div class="profileInfo backgroundImg">
@@ -71,7 +71,7 @@ buildLeftSideBar = async () => {
 
 buildNewsFeed = async () => {
     const newsFeed = document.querySelector('.newsFeed')
-    const feed = await axios.get(`https://polar-spire-94788.herokuapp.com/api/post/`)
+    const feed = await axios.get(`https://gittech-production.up.railway.app/api/post/`)
     newsFeed.innerHTML = ``
     let currentPost = []
     let currentComment = []
@@ -80,8 +80,8 @@ buildNewsFeed = async () => {
     let currentPostUser = []
     
     for (let i = 0; i < feed.data.length; i++) {
-        let postUser = await axios.get(`https://polar-spire-94788.herokuapp.com/api/user/${feed.data[i].userId}`)
-        let postLikes = await axios.get(`https://polar-spire-94788.herokuapp.com/api/postLike/${feed.data[i]._id}`)
+        let postUser = await axios.get(`https://gittech-production.up.railway.app/api/user/${feed.data[i].userId}`)
+        let postLikes = await axios.get(`https://gittech-production.up.railway.app/api/postLike/${feed.data[i]._id}`)
 
         const currentDate = new Date()
         const likes = postLikes.data.length
@@ -156,7 +156,7 @@ buildNewsFeed = async () => {
                     window.localStorage.setItem('viewedUser', JSON.stringify(currentPostUser[j-1]))
                     window.localStorage.setItem('currentUser', JSON.stringify(user.data._id))
                     location.href="./profile.html"
-                    await axios.put(`https://polar-spire-94788.herokuapp.com/api/profileView?userId=${user.data._id}&viewed=${currentPostUser[j-1]}&date=${currentDate}`)
+                    await axios.put(`https://gittech-production.up.railway.app/api/profileView?userId=${user.data._id}&viewed=${currentPostUser[j-1]}&date=${currentDate}`)
                 }
             }
         }
@@ -165,7 +165,7 @@ buildNewsFeed = async () => {
         for (let j = 0; j < like.length; j++){
             like[j].onclick = () => {
                 addLike = async () => {
-                    const thisLike = await axios.put(`https://polar-spire-94788.herokuapp.com/api/postLike?postId=${currentPost[j]}&userId=${user.data._id}&date=${currentDate}`) 
+                    const thisLike = await axios.put(`https://gittech-production.up.railway.app/api/postLike?postId=${currentPost[j]}&userId=${user.data._id}&date=${currentDate}`) 
                 }
                 addLike()
                 buildNewsFeed()
@@ -189,9 +189,9 @@ buildNewsFeed = async () => {
                 comment.appendChild(newDiv)
                 const input = document.querySelector(`.input${j}`)
 
-                let postComments = await axios.get(`https://polar-spire-94788.herokuapp.com/api/comment/${currentPost[j]}`)
+                let postComments = await axios.get(`https://gittech-production.up.railway.app/api/comment/${currentPost[j]}`)
                 for (let k = 0; k < postComments.data.length; k++) {
-                    let commenterUser = await axios.get(`https://polar-spire-94788.herokuapp.com/api/user/${postComments.data[k].userId}`)
+                    let commenterUser = await axios.get(`https://gittech-production.up.railway.app/api/user/${postComments.data[k].userId}`)
                     console.log(commenterUser)
                     console.log(postComments)
                     const thisComment = postComments.data[k].comment
@@ -217,7 +217,7 @@ buildNewsFeed = async () => {
                 input.onkeydown = async () => {
                     if (event.keyCode === 13) {
                         comment.innerHTML = ""
-                        const newComment = await axios.post(`https://polar-spire-94788.herokuapp.com/api/comment?userId=${user.data._id}&date=${currentDate}&postId=${currentPost[j]}&comment=${input.value}`)
+                        const newComment = await axios.post(`https://gittech-production.up.railway.app/api/comment?userId=${user.data._id}&date=${currentDate}&postId=${currentPost[j]}&comment=${input.value}`)
                     }
                 }
             }
@@ -242,7 +242,7 @@ buildNewsFeed = async () => {
                 btn1.onclick = async () => {
                     console.log(`Share to newsfeed on ${j}`)
                     buildNewsFeed()
-                    const sharePost = await axios.post(`https://polar-spire-94788.herokuapp.com/api/post/?userId=${user.data._id}&date=${currentDate}&text=${feed.data[j].text}`)
+                    const sharePost = await axios.post(`https://gittech-production.up.railway.app/api/post/?userId=${user.data._id}&date=${currentDate}&text=${feed.data[j].text}`)
                     
                 }
                 btn2.onclick = () => {
@@ -280,7 +280,7 @@ buildLogInModal = async () => {
 }
 
 buildMessagesModal = async () => {
-    // const message = await axios.get(`https://polar-spire-94788.herokuapp.com/api/message/${user.data._id}`)
+    // const message = await axios.get(`https://gittech-production.up.railway.app/api/message/${user.data._id}`)
 
     // we are here
     // for (let j = 0; j < message.data.length; j++)
@@ -395,7 +395,7 @@ buildCreateNewPostModal = async () => {
                 const date = new Date()
                 const newPost = input.value
                 modalContent.style.display = 'none'
-                const createNewPost = await axios.post(`https://polar-spire-94788.herokuapp.com/api/post/?userId=${user.data._id}&date=${date}&text=${newPost}`)
+                const createNewPost = await axios.post(`https://gittech-production.up.railway.app/api/post/?userId=${user.data._id}&date=${date}&text=${newPost}`)
             }
             buildNewsFeed()
         }
@@ -414,7 +414,7 @@ buildCreateNewPostModal = async () => {
 
 buildProfileViewsModal = async () => {
     const profileViews = document.getElementById('profileViewModal')
-    const myviews = await axios.get(`https://polar-spire-94788.herokuapp.com/api/profileview/${user.data._id}`)
+    const myviews = await axios.get(`https://gittech-production.up.railway.app/api/profileview/${user.data._id}`)
 
     profileViews.innerHTML = `
     <div class="modal-content">
