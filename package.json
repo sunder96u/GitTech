@@ -11,7 +11,8 @@
     "mongoose": "^7.2.2",
     "morgan": "^1.10.0",
     "passport": "^0.6.0",
-    "passport-github2": "^0.1.12"
+    "passport-github2": "^0.1.12",
+    "surge": "^0.23.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"

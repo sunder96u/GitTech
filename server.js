@@ -7,12 +7,13 @@ const logger = require('morgan')
 const session = require('express-session')
 const passport = require('passport')
 require('./passport')
+require('dotenv').config()
 
 const app = express()
 app.use(cors())
 app.use(express.json())
-//app.use(cookieParser())
-//app.use(express.static(path.join(_dirname, 'public')))
+app.use(cookieParser())
+app.use(express.static(path.join(_dirname, 'public')))
 
 app.use(session({
     secret: process.env.SECRET,
