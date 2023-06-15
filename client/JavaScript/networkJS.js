@@ -175,7 +175,6 @@ buildInNetwork = async () => {
             <div class="personBody">
             <p>${users.data[i].firstName} ${users.data[i].lastName} </br>
             GitHub </br>
-            Company</p>
             </div>
             <button class="connect">connect</button>
             `

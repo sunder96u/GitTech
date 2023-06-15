@@ -302,7 +302,58 @@ buildExperience = async () => {
     }
     const expAdd = document.querySelector('.expAdd')
     expAdd.onclick = async () => {
-        
+        buildModal()
+        const modal = document.getElementById('modal')
+        modal.style.display='block'
+        modal.innerHTML = `
+        <div class="modal-content">
+        <div class="modal-header">
+            <h3> Add Experience</h3>
+            <button type="button" class="close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <h5> Starting Month: </h5>
+                <input class="input sMonth">
+            <h5> Starting Year: </h5>
+                <input class="input sYear">
+            <h5> Ending Month: </h5>
+                <input class="input eMonth">
+            <h5> Ending Year: </h5>
+                <input class="input eYear">
+            <h5> Company: </h5>
+                <input class="input comp">
+            <h5> Position: </h5>
+                <input class="input position">
+            <h5> Duties: </h5>
+                <input class="input duties">
+        </div>
+        <button class="submit">Submit</button>
+        </div>`
+        const closeMessage = document.querySelector('.close')
+        closeMessage.onclick = () => {
+            modal.style.display  = 'none'
+        }
+
+        const sMonth = document.querySelector('.sMonth')
+        const eMonth = document.querySelector('.eMonth')
+        const sYear = document.querySelector('.sYear')
+        const eYear = document.querySelector('.eYear')
+        const comp = document.querySelector('.comp')
+        const position = document.querySelector('.position')
+        const input = document.querySelector('.duties')
+        input.onkeydown = async () => {
+            if (event.keyCode === 13) {
+                modal.style.display = 'none'
+                await axios.post(`http://localhost:3001/api/experience?userId={currentUser}&startMonth=${sMonth.value}&startYear=${sYear.value}&endMonth=${eMonth.value}&eYear=${eYear.value}&company=${comp.value}&position=${position.value}&duties=${input.value}`)
+                buildPage()
+            }
+        }
+        const submit = document.querySelector('.submit')
+        submit.onclick = async () => {
+            modal.style.display = 'none'
+            await axios.post(`http://localhost:3001/api/experience?userId={currentUser}&startMonth=${sMonth.value}&startYear=${sYear.value}&endMonth=${eMonth.value}&eYear=${eYear.value}&company=${comp.value}&position=${position.value}&duties=${input.value}`)
+            buildPage()
+        }
     }
 
 }
@@ -310,7 +361,6 @@ buildExperience = async () => {
 buildProjects = async () => {
     const project = document.querySelector('.myproject')
     const exp = await axios.get(`http://localhost:3001/api/project/${viewedUser}`)
-    console.log(exp)
 
     if (viewedUser === currentUser) {
         project.innerHTML = `
@@ -372,7 +422,47 @@ buildProjects = async () => {
 
     const projectAdd = document.querySelector('.projectAdd')
     projectAdd.onclick = async () => {
-        console.log(`projectadd hit`)
+        buildModal()
+        const modal = document.getElementById('modal')
+        modal.style.display='block'
+        modal.innerHTML = `
+        <div class="modal-content">
+        <div class="modal-header">
+            <h3>Add project</h3>
+            <button type="button" class="close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <h5>Project name:</h5>
+                <input class="input proname">
+            <h5>Github URL: </h5>
+                <input class="input github">
+            <h5>Website URL: </h5>
+                <input class="input website">
+        </div>
+        <button class="submit">Submit</button>
+        </div>`
+        const closeMessage = document.querySelector('.close')
+        closeMessage.onclick = () => {
+            modal.style.display  = 'none'
+        }
+
+        const proname = document.querySelector('.proname')
+        const github = document.querySelector('.github')
+        const website = document.querySelector('.website')
+        const input = document.querySelector('.website')
+        input.onkeydown = async () => {
+            if (event.keyCode === 13) {
+                modal.style.display = 'none'
+                await axios.post(`http://localhost:3001/api/projects?userId=${currentUser}&name=${proname.value}&github=${github.value}&website=${website.value}`)
+                buildPage()
+            }
+        }
+        const submit = document.querySelector('.submit')
+        submit.onclick = async () => {
+            modal.style.display = 'none'
+            await axios.post(`http://localhost:3001/api/projects?userId=${currentUser}&name=${proname.value}&github=${github.value}&website=${website.value}`)
+            buildPage()
+        }
     }
 }
 
@@ -400,6 +490,40 @@ buildSkills = async () => {
             </div>
             `
             mySkills.appendChild(div)
+            let myskills = []
+            myskills.push(skills.data[i]._id)
+            const skillsEdit = document.querySelectorAll('.skillsEdit')
+            for (let j = 0; j < myskills.length; j++) {
+                skillsEdit[j].onclick = async () => {
+                    buildModal()
+                    const modal = document.getElementById('modal')
+                    modal.style.display='block'
+                    modal.innerHTML = `
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Edit Skill</h3>
+                        <button type="button" class="close">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <h3>Edit Skill:</h3>
+                            <input class="input mySkill skillsinput">
+                    </div>
+                    </div>`
+                    const closeMessage = document.querySelector('.close')
+                    closeMessage.onclick = () => {
+                        modal.style.display  = 'none'
+                    }
+            
+                    const skillsinput = document.querySelector('.skillsinput')
+                    skillsinput.onkeydown = async () => {
+                        if (event.keyCode === 13) {
+                            modal.style.display = 'none'
+                            await axios.put(`http://localhost:3001/api/skill/edit?userId=${currentUser}&whatToUpdate=skillname&update=${skillsinput.value}`)
+                            buildPage()
+                        }
+                    }
+                }
+            }
         }
 
     } else {
@@ -424,7 +548,33 @@ buildSkills = async () => {
     }
     const skillAdd = document.querySelector('.skillsAdd')
     skillAdd.onclick = async () => {
-        console.log(`skilladd hit`)
+        buildModal()
+        const modal = document.getElementById('modal')
+        modal.style.display='block'
+        modal.innerHTML = `
+        <div class="modal-content">
+        <div class="modal-header">
+            <h3>Add Skill</h3>
+            <button type="button" class="close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <h3>New Skill:</h3>
+                <input class="input mySkill">
+        </div>
+        </div>`
+        const closeMessage = document.querySelector('.close')
+        closeMessage.onclick = () => {
+            modal.style.display  = 'none'
+        }
+
+        const input = document.querySelector('.input')
+        input.onkeydown = async () => {
+            if (event.keyCode === 13) {
+                modal.style.display = 'none'
+                await axios.post(`http://localhost:3001/api/skill?userId=${currentUser}&skillname=${input.value}`)
+                buildPage()
+            }
+        }
     }
 }
 

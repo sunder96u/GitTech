@@ -414,6 +414,8 @@ buildCreateNewPostModal = async () => {
 
 buildProfileViewsModal = async () => {
     const profileViews = document.getElementById('profileViewModal')
+    const myviews = await axios.get(`http://localhost:3001/api/profileview/${user.data._id}`)
+
     profileViews.innerHTML = `
     <div class="modal-content">
     <div class="modal-header">
@@ -422,26 +424,33 @@ buildProfileViewsModal = async () => {
     </div>
     <div class="modal-body">
     <div class="card">
-    <div><h3> My connections:</h3></div>
+    <div><h3> Recent Views:</h3></div>
     <div class="line"></div>
-    <div class="personCard">
-        <div class="personHeader">
-        <img class="background" src="assets/bigstock-Technology-Background-Modern-388206850-web-768x461.jpg">
-        <img class="icon" src="assets/profile picture.jpeg">
-        </div>
-        <div class="personBody">
-        <p>Person's Name </br>
-        GitHub </br>
-        Company</p>
-        </div>
-        <div class="buttons">
-        <button>Accept</button>
-        <button>Delete</button>
-        </div>
+    <div class="personCard viewers">
     </div>
     </div>
     </div>
     </div>`
+    const viewers = document.querySelector('.viewers')
+    for (let i = 0; i < myviews.data.length; i++) {
+        const div = document.createElement('div')
+        div.innerHTML = `
+        <div class="personHeader">
+        <img class="background" src="assets/bigstock-Technology-Background-Modern-388206850-web-768x461.jpg">
+        <img class="icon" src="${myviews.data[i].photo}">
+        </div>
+        <div class="personBody">
+        <p>${myviews.data[i].firstName} ${myviews.data[i].lastName} </br>
+        GitHub </br>
+        </div>
+        </div>
+        `
+        viewers.appendChild(div)
+    }
+
+
+
+
     const closeProfile = document.querySelector('.closeProfile')
     closeProfile.onclick = () => {
         profileViews.style.display = 'none'
