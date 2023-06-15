@@ -37,10 +37,10 @@ buildPage = async () => {
 
 buildLeftSideBar = async () => {
     const leftSideBar = document.querySelector('.leftSideBar')
-    const myUser = await axios.get(`http://localhost:3001/api/user/${user}`)
+    const myUser = await axios.get(`https://polar-spire-94788.herokuapp.com/api/user/${user}`)
     user = myUser
-    const connections = await axios.get(`http://localhost:3001/api/connection/${myUser.data._id}`)
-    const views = await axios.get(`http://localhost:3001/api/profileView/${myUser.data._id}`)
+    const connections = await axios.get(`https://polar-spire-94788.herokuapp.com/api/connection/${myUser.data._id}`)
+    const views = await axios.get(`https://polar-spire-94788.herokuapp.com/api/profileView/${myUser.data._id}`)
 
     leftSideBar.innerHTML = `
     <div class="profileInfo backgroundImg">
@@ -62,8 +62,8 @@ buildLeftSideBar = async () => {
 
 buildPendingInvites = async () => {
     const pending = document.querySelector('.pendingInvites')
-    const pendingconnection = await axios.get(`http://localhost:3001/api/connection/pending/${user}`)
-    const pendingCon = await axios.get(`http://localhost:3001/api/connection/myinvites/${user.data._id}`)
+    const pendingconnection = await axios.get(`https://polar-spire-94788.herokuapp.com/api/connection/pending/${user}`)
+    const pendingCon = await axios.get(`https://polar-spire-94788.herokuapp.com/api/connection/myinvites/${user.data._id}`)
     pending.innerHTML = ""
 
     if (pendingconnection.data.length === 0) {
@@ -106,8 +106,8 @@ buildPendingInvites = async () => {
 
 buildConnections = async () => {
     const connections = document.querySelector('.connections')
-    const connection = await axios.get(`http://localHost:3001/api/connection/${user}`)
-    const myConnections = await axios.get(`http://localHost:3001/api/connection/myconnections/${user.data._id}`)
+    const connection = await axios.get(`https://polar-spire-94788.herokuapp.com/api/connection/${user}`)
+    const myConnections = await axios.get(`https://polar-spire-94788.herokuapp.com/api/connection/myconnections/${user.data._id}`)
     connections.innerHTML = ''
 
 
@@ -146,7 +146,7 @@ buildConnections = async () => {
 
 buildInNetwork = async () => {
     const inNetwork = document.querySelector('.mayKnow')
-    const users = await axios.get(`http://localhost:3001/api/connection`)
+    const users = await axios.get(`https://polar-spire-94788.herokuapp.com/api/connection`)
     const connections = []
 
     if(users === 0) {
@@ -184,7 +184,7 @@ buildInNetwork = async () => {
             for (let k = 0; k < connect.length; k++) {
                 connect[k].onclick = async () => {
                     for (let l = 0; l < connections.length; l++) {
-                        const connectTo = await axios.post(`http://localhost:3001/api/connection/add?userId=${user.data._id}&connection=${connections[k]}&accepted=true`)
+                        const connectTo = await axios.post(`https://polar-spire-94788.herokuapp.com/api/connection/add?userId=${user.data._id}&connection=${connections[k]}&accepted=true`)
                     }
                 }
             }
@@ -194,7 +194,7 @@ buildInNetwork = async () => {
 }
 
 buildMessagesModal = async () => {
-    // const message = await axios.get(`http://localhost:3001/api/message/${user.data._id}`)
+    // const message = await axios.get(`https://polar-spire-94788.herokuapp.com/api/message/${user.data._id}`)
 
     // we are here
     // for (let j = 0; j < message.data.length; j++)

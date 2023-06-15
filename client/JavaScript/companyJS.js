@@ -41,13 +41,13 @@ buildPage = async () => {
 //     const harduser = `64876aee1a364ca921525b03`
 
 //     const leftSideBar = document.querySelector('.leftSideBar')
-//     const myUser = await axios.get(`http://localhost:3001/api/user/${harduser}`)
+//     const myUser = await axios.get(`https://polar-spire-94788.herokuapp.com/api/user/${harduser}`)
 //     user = myUser
-//     const connections = await axios.get(`http://localhost:3001/api/connection/${myUser.data._id}`)
-//     const views = await axios.get(`http://localhost:3001/api/profileView/${myUser.data._id}`)
-//     const company = await axios.get(`http://localhost:3001/api/company/${myUser.data._id}`)
+//     const connections = await axios.get(`https://polar-spire-94788.herokuapp.com/api/connection/${myUser.data._id}`)
+//     const views = await axios.get(`https://polar-spire-94788.herokuapp.com/api/profileView/${myUser.data._id}`)
+//     const company = await axios.get(`https://polar-spire-94788.herokuapp.com/api/company/${myUser.data._id}`)
 //     const myCompany = company.data.name
-//     const groups = await axios.get(`http://localhost:3001/api/group/${myUser.data._id}`)
+//     const groups = await axios.get(`https://polar-spire-94788.herokuapp.com/api/group/${myUser.data._id}`)
 
 //     leftSideBar.innerHTML = `
 //     <div class="profileInfo backgroundImg">
@@ -156,7 +156,7 @@ buildCompanyPosts = async () => {
 
 
 buildMessagesModal = async () => {
-    // const message = await axios.get(`http://localhost:3001/api/message/${user.data._id}`)
+    // const message = await axios.get(`https://polar-spire-94788.herokuapp.com/api/message/${user.data._id}`)
 
     // we are here
     // for (let j = 0; j < message.data.length; j++)
