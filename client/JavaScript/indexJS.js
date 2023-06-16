@@ -35,7 +35,8 @@ buildPage = async () => {
 }
 
 buildLeftSideBar = async () => {
-    const harduser = `6489cf8c53aaf6f85a935d49`
+    //const harduser = `6489cf8c53aaf6f85a935d49`
+    const harduser = `6489cf8c53aaf6f85a935d4a`
 
     const leftSideBar = document.querySelector('.leftSideBar')
     const myUser = await axios.get(`https://gittech-production.up.railway.app/api/user/${harduser}`)
