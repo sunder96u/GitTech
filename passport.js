@@ -1,6 +1,7 @@
 const passport = require('passport')
-
-const GithubStrategy = require('passport-github2').OAuth2Strategy
+const User = require('./models/users')
+require('dotenv').config()
+const GitHubStrategy = require('passport-github2').OAuth2Strategy
 
 passport.serializeUser(function(user, cb) {
     cb(null, user._id)
@@ -10,15 +11,16 @@ passport.deserializeUser(async function(userId, cb) {
     cb(null, await User.findById(userId))
 })
 
-passport.use(new GithubStrategy (
+passport.use(new GitHubStrategy (
     {
     clientID: process.env.CLIENTID,
     clientSecret: process.env.CLIENTSECRET,
     callbackURL: process.env.CALLBACKURL
     },
-
-    async function(accessToken, refreshToken, profile, cb) {
-
-    }
+    function(accessToken, refreshToken, profile, cb) {
+        User.findOrCreate({ githubId: profile.id }, function (err, user) {
+          return cb(err, user);
+        });
+      }
 ))
 
