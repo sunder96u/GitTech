@@ -7,7 +7,7 @@ Being linked to Github will allow the users to quickly and easily view the other
 
 ScreenShots of application:
 HomePage:
-![homescreenshot](./client/assets/)
+![homescreenshot](./client/assets/Screenshot%202023-06-15%20at%2010.42.42%20PM.png)
 Profile when Logged in
 ![profile](./client/assets/Screenshot%202023-06-15%20at%2010.43.28%20PM.png)
 Connections page:
