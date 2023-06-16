@@ -488,5 +488,10 @@ messages.onclick = () => {
     modal.style.display = 'block'
 }
 
+const testlogin = document.querySelector('.testloging')
+testlogin.onclick = async () => {
+    //await axios.get('https://gittech-production.up.railway.app/api/auth/github')
+    await axios.get('http://localhost:3002/api/auth/github')
+}
 
 buildPage()

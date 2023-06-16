@@ -33,9 +33,9 @@ Router.use('/school', schoolsRouter)
 Router.use('/skill', skillsRouter)
 Router.use('/user', userRouter)
 
-Router.get('/githubauthroute', passport.authenticate(
+Router.get('/auth/github', passport.authenticate(
     'github', {
-        scope: ['profile', 'email']
+        scope: ['user:email']
     }
 ))
 Router.get('/callback', passport.authenticate(
